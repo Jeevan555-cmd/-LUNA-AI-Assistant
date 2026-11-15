@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Personal data and recordings
+data/
+*.db
+*.sqlite
+*.sqlite3
+*.wav
+*.mp3
+*.flac
+
+# Voice models and downloaded AI models
+voices/
+*.onnx
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.gguf
+
+# Backups and logs
+*.bak
+*.backup
+*.backup2
+*.log
+*.tmp
+
+# Backup source files
+*_backup.py
+*_damaged.py
