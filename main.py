@@ -1,4 +1,4 @@
-
+﻿
 """
 LUNA AI - MAIN APPLICATION
 
@@ -19,6 +19,7 @@ Run:
     python main.py
 """
 
+
 import json
 import re
 import threading
@@ -31,6 +32,7 @@ import knowledge
 import llm
 import stt
 import chrome_control
+import browser_control
 
 
 # =====================================================
@@ -608,6 +610,21 @@ class Luna:
         )
 
         # ---------------------------------------------
+        # CHATGPT BROWSER AUTOMATION
+        # ---------------------------------------------
+
+        try:
+            browser_response = browser_control.handle_command(question)
+        except Exception as error:
+            print(f"\n(Browser automation error: {error})")
+            browser_response = "Sorry boss, browser automation failed."
+
+        if browser_response is not None:
+            print(f"\n{config.ASSISTANT_NAME}: {browser_response}")
+            self.say(browser_response)
+            return
+
+        # ---------------------------------------------
         # CHROME VOICE AUTOMATION
         # ---------------------------------------------
 
@@ -635,6 +652,32 @@ class Luna:
 
             self.say(chrome_response)
 
+            return
+
+        # ---------------------------------------------
+        # UNCLEAR BROWSER COMMAND SAFETY GUARD
+        # ---------------------------------------------
+
+        browser_action = re.search(
+            r"\\b(open|launch|visit|go to|play|search|find)\\b",
+            question,
+            re.IGNORECASE
+        )
+
+        browser_target = re.search(
+            r"\\b(youtube|you\\s+to|you\\s+too|google|chrome|"
+            r"chat\\s*gpt|chatgpt|github|gmail|linkedin|browser)\\b",
+            question,
+            re.IGNORECASE
+        )
+
+        if browser_action and browser_target:
+            message = (
+                "I didn't catch that browser command, boss. "
+                "Please repeat it."
+            )
+            print(f"\\n{config.ASSISTANT_NAME}: {message}")
+            self.say(message)
             return
 
         # ---------------------------------------------
@@ -1161,3 +1204,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

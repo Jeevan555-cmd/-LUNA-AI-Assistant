@@ -33,7 +33,7 @@ USER_TITLE = "boss"
 WHISPER_VOCABULARY = [
     "Jeevan", "Jeevan Poojary", "Chetan", "Girish", "Mithun",
     "Shashank", "Sudeep", "Shriharsha", "Yashas", "Raghu",
-    "Hemawati", "Suresh",
+    "Hemawati", "Suresh","Karunya", "Udupi","Mangalore", 
     "JavaScript", "JavaScript promises", "JavaScript programming",
     "JavaScript asynchronous programming", "JavaScript event loop",
     "async", "await", "Promise", "React", "React hooks", "Next.js",
@@ -217,7 +217,7 @@ SPEAKER_MODEL = (
 )
 
 OWNER_VOICE_PROFILE = DATA_DIR / "owner_voice.json"
-OWNER_VERIFICATION_ENABLED = True
+OWNER_VERIFICATION_ENABLED = False
 OWNER_ENROLLMENT_SAMPLES = 3
 OWNER_MIN_UTTERANCE_SECONDS = 3.0
 OWNER_VERIFY_TIMEOUT = 15
